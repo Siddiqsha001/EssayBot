@@ -1,0 +1,30 @@
+.page-container {
+  min-height: 100vh;
+  padding-top: 70px; /* Height of navbar */
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.content-wrapper {
+  margin: 2rem auto;
+  background: rgba(243, 238, 238, 0.98);
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  min-height: calc(100vh - 140px);
+}
+
+@media (max-width: 768px) {
+  .page-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .content-wrapper {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+}

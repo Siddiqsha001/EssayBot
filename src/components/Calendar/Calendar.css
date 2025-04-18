@@ -1,0 +1,430 @@
+/* Full Enhanced CSS with Professional Animations */
+/* Base Layout Styles (unchanged) */
+.calendar-container {
+  height: 100vh;
+  width: 95vw;
+  padding: 2rem;
+  background: linear-gradient(to bottom right, #f0f4ff, #e0e7ff);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.add-event-btn {
+  background: #4f46e5;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  position: relative;
+  overflow: hidden;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #1f2937;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 4px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #374151;
+}
+
+.modal-input,
+.modal-select,
+.modal-textarea {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.modal-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-group input {
+  margin-right: 8px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.cancel-btn,
+.save-btn,
+.complete-btn,
+.delete-btn {
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.cancel-btn {
+  background-color: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.save-btn,
+.complete-btn {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+}
+
+.save-btn:disabled,
+.complete-btn:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+}
+
+.delete-btn {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+}
+
+.event-details {
+  margin-top: 16px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 8px;
+}
+
+.detail-icon {
+  color: #6b7280;
+}
+
+.detail-label {
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.difficulty-tag {
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.score-input {
+  margin-top: 16px;
+}
+
+.score-input input {
+  width: 80px;
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+
+.result-display {
+  margin-top: 16px;
+  padding: 12px;
+  background-color: #f8fafc;
+  border-radius: 4px;
+}
+
+.success-text {
+  color: #10b981;
+  font-weight: 500;
+}
+
+.improvement-text {
+  color: #f59e0b;
+  font-weight: 500;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+.loading-spinner {
+  border: 3px solid #e0e7ff;
+  border-top: 3px solid #6366f1;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+/* Enhanced Animations */
+@keyframes fadeIn {
+  0% { 
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modalAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes buttonPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.4);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 6px rgba(79, 70, 229, 0);
+  }
+}
+
+@keyframes inputFocusGlow {
+  0% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0);
+  }
+}
+
+@keyframes smoothHover {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes spin {
+  0% { 
+    transform: rotate(0deg);
+    border-top-color: #6366f1;
+  }
+  50% {
+    border-top-color: #8b5cf6;
+  }
+  100% { 
+    transform: rotate(360deg);
+    border-top-color: #6366f1;
+  }
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Animation Applications */
+.calendar-container {
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.modal-content {
+  animation: modalAppear 0.3s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.add-event-btn {
+  animation: buttonPulse 2s infinite;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.add-event-btn:hover {
+  animation: none;
+  transform: translateY(-2px) scale(1.02);
+}
+
+.modal-input:focus,
+.modal-select:focus,
+.modal-textarea:focus {
+  animation: inputFocusGlow 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.save-btn,
+.complete-btn,
+.delete-btn,
+.cancel-btn {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.save-btn:hover,
+.complete-btn:hover,
+.delete-btn:hover,
+.cancel-btn:hover {
+  animation: smoothHover 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.loading-spinner {
+  animation: spin 1s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+.close-btn {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.close-btn:hover {
+  transform: rotate(90deg);
+}
+
+.difficulty-tag {
+  transition: all 0.2s ease-out;
+  transform-origin: center;
+}
+
+.difficulty-tag:hover {
+  transform: scale(1.05);
+}
+
+.checkbox-group input[type="checkbox"] {
+  transition: all 0.2s ease;
+}
+
+.checkbox-group input[type="checkbox"]:checked {
+  transform: scale(1.1);
+}
+
+/* Ripple Effect */
+.add-event-btn:after,
+.save-btn:after,
+.complete-btn:after,
+.delete-btn:after,
+.cancel-btn:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform .5s, opacity 1s;
+}
+
+.add-event-btn:active:after,
+.save-btn:active:after,
+.complete-btn:active:after,
+.delete-btn:active:after,
+.cancel-btn:active:after {
+  transform: scale(0, 0);
+  opacity: .3;
+  transition: 0s;
+}
+
+/* Responsive Design (unchanged) */
+@media (max-width: 768px) {
+  .calendar-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 16px;
+  }
+}
